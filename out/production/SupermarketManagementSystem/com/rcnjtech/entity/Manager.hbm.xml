@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.rcnjtech.entity.Manager" table="manager">
+        <id name="mid" column="mid" type="integer">
+            <generator class="assigned"/>
+        </id>
+        <property name="name" column="name" type="string" length="20" not-null="true"/>
+        <property name="password" column="password" type="string" length="20" not-null="true"/>
+        <property name="sex" column="sex" type="string" length="1"/>
+        <property name="age" column="age" type="integer"/>
+        <property name="email" column="email" type="string" length="30"/>
+        <property name="firm" column="firm" type="string" length="50"/>
+        <property name="address" column="address" type="string" length="50"/>
+    </class>
+</hibernate-mapping>

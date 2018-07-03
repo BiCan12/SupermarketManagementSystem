@@ -1,0 +1,33 @@
+/* index.jsp */
+
+/* 为页面设置背景图片 */
+body {
+    background: url(../img/background.png) top center no-repeat;
+    background-size: cover;
+}
+
+/* 登录卡片区样式 */
+.login-card {
+    background: #fff;
+    border-radius: 10px;
+    margin-top: 100px;
+    padding: 20px 20px;
+}
+
+/* 登录卡片区标题样式*/
+.login-card-title {
+    color: #0f88eb;
+    text-align: center;
+}
+
+/* 页脚样式 */
+.footer {
+    text-align: center;
+    color: #8590a6;
+}
+
+/* 页脚链接样式 */
+.footer a {
+    text-decoration: none;
+    color: #8590a6;
+}

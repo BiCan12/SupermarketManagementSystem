@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SupermarketManagementSystem:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/SupermarketManagementSystem_war</output-path>
+    <root id="archive" name="SupermarketManagementSystem_war.war">
+      <element id="artifact" artifact-name="SupermarketManagementSystem:war exploded" />
+    </root>
+  </artifact>
+</component>

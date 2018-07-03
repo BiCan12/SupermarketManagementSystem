@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="default" extends="struts-default" namespace="/">
+        <action name="managerRegister" class="managerRegisterAction" method="register">
+            <result name="success" type="redirect">/index.jsp</result>
+            <result name="input" type="redirect">/register.jsp</result>
+        </action>
+
+        <action name="userLogin" class="userAction" method="login">
+            <result name="success" type="redirect">/index.jsp</result>
+            <result name="login" type="redirect">/login.jsp</result>
+        </action>
+
+        <action name="userLogon" class="userAction" method="logon">
+            <result name="success" type="redirect">/index.jsp</result>
+            <result name="login" type="redirect">/index.jsp</result>
+        </action>
+
+        <action name="dashboardRole" class="userAction" method="dashboardRole">
+            <result name="manager" type="redirect">/dashboard.jsp</result>
+            <result name="employee" type="redirect">/dashboard-employee.jsp</result>
+            <result name="login" type="redirect">/login.jsp</result>
+        </action>
+
+        <!-- 员工Action -->
+        <action name="addEmployee" class="employeeAction" method="add">
+            <result name="success" type="redirect">/dashboard-employee-add.jsp</result>
+            <result name="input" type="redirect">/dashboard-employee-add.jsp</result>
+        </action>
+
+        <action name="updateEmployee" class="employeeAction" method="update">
+            <result name="success" type="redirect">/dashboard-employee-update.jsp</result>
+            <result name="input" type="redirect">/dashboard-employee-update.jsp</result>
+        </action>
+
+        <action name="deleteEmployee" class="employeeAction" method="delete">
+            <result name="success" type="redirect">/dashboard-employee-delete.jsp</result>
+            <result name="input" type="redirect">/dashboard-employee-delete.jsp</result>
+        </action>
+
+        <action name="findAllEmployee" class="employeeAction" method="findAll">
+            <result name="success">/dashboard-employee-query.jsp</result>
+            <result name="input" type="redirect">/dashboard-employee-query.jsp</result>
+        </action>
+
+        <action name="findEmployee" class="employeeAction" method="find">
+            <result name="success">/dashboard-employee-query.jsp</result>
+            <result name="input" type="redirect">/dashboard-employee-query.jsp</result>
+        </action>
+
+        <action name="getUpdateEmployee" class="employeeAction" method="get">
+            <result name="success">/dashboard-employee-update.jsp</result>
+            <result name="input" type="redirect">/dashboard-employee-update.jsp</result>
+        </action>
+
+        <action name="getDeleteEmployee" class="employeeAction" method="get">
+            <result name="success">/dashboard-employee-delete.jsp</result>
+            <result name="input" type="redirect">/dashboard-employee-delete.jsp</result>
+        </action>
+
+        <!-- 供应商Action -->
+        <action name="addSupplier" class="supplierAction" method="add">
+            <result name="success" type="redirect">/dashboard-supplier-add.jsp</result>
+            <result name="input" type="redirect">/dashboard-supplier-add.jsp</result>
+        </action>
+
+        <action name="updateSupplier" class="supplierAction" method="update">
+            <result name="success" type="redirect">/dashboard-supplier-update.jsp</result>
+            <result name="input" type="redirect">/dashboard-supplier-update.jsp</result>
+        </action>
+
+        <action name="deleteSupplier" class="supplierAction" method="delete">
+            <result name="success" type="redirect">/dashboard-supplier-delete.jsp</result>
+            <result name="input" type="redirect">/dashboard-supplier-delete.jsp</result>
+        </action>
+
+        <action name="findAllSupplier" class="supplierAction" method="findAll">
+            <result name="success">/dashboard-supplier-query.jsp</result>
+            <result name="input" type="redirect">/dashboard-supplier-query.jsp</result>
+        </action>
+
+        <action name="findSupplier" class="supplierAction" method="find">
+            <result name="success">/dashboard-supplier-query.jsp</result>
+            <result name="input" type="redirect">/dashboard-supplier-query.jsp</result>
+        </action>
+
+        <action name="getUpdateSupplier" class="supplierAction" method="get">
+            <result name="success">/dashboard-supplier-update.jsp</result>
+            <result name="input" type="redirect">/dashboard-supplier-update.jsp</result>
+        </action>
+
+        <action name="getDeleteSupplier" class="supplierAction" method="get">
+            <result name="success">/dashboard-supplier-delete.jsp</result>
+            <result name="input" type="redirect">/dashboard-supplier-delete.jsp</result>
+        </action>
+
+        <!-- 商品Action -->
+        <action name="addGoodsBuy" class="goodsAction" method="addBuy">
+            <result name="success" type="redirect">/dashboard-goods-buy-add.jsp</result>
+            <result name="input" type="redirect">/dashboard-goods-buy-add.jsp</result>
+        </action>
+
+        <action name="addGoodsSell" class="goodsAction" method="addSell">
+            <result name="success" type="redirect">/dashboard-goods-sell-add.jsp</result>
+            <result name="input" type="redirect">/dashboard-goods-sell-add.jsp</result>
+        </action>
+
+        <action name="findAllBuyGoods" class="goodsAction" method="findAll">
+            <result name="success">/dashboard-goods-buy-query.jsp</result>
+            <result name="input" type="redirect">/dashboard-goods-buy-query.jsp</result>
+        </action>
+
+        <action name="findBuyGoods" class="goodsAction" method="find">
+            <result name="success">/dashboard-goods-buy-query.jsp</result>
+            <result name="input" type="redirect">/dashboard-goods-buy-query.jsp</result>
+        </action>
+
+        <action name="findAllSellGoods" class="goodsAction" method="findAll">
+            <result name="success">/dashboard-goods-sell-query.jsp</result>
+            <result name="input" type="redirect">/dashboard-goods-sell-query.jsp</result>
+        </action>
+
+        <action name="findSellGoods" class="goodsAction" method="find">
+            <result name="success">/dashboard-goods-sell-query.jsp</result>
+            <result name="input" type="redirect">/dashboard-goods-sell-query.jsp</result>
+        </action>
+
+        <action name="findAllRemainGoods" class="goodsAction" method="findAll">
+            <result name="success">/dashboard-goods-remain-query.jsp</result>
+            <result name="input" type="redirect">/dashboard-goods-remain-query.jsp</result>
+        </action>
+
+        <action name="findRemainGoods" class="goodsAction" method="find">
+            <result name="success">/dashboard-goods-remain-query.jsp</result>
+            <result name="input" type="redirect">/dashboard-goods-remain-query.jsp</result>
+        </action>
+
+        <action name="getSellGoods" class="goodsAction" method="get">
+            <result name="success">/dashboard-goods-sell-add.jsp</result>
+            <result name="input" type="redirect">/dashboard-goods-sell-add.jsp</result>
+        </action>
+    </package>
+</struts>

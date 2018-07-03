@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	                       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+    <!-- Hibernate + Druid 数据库连接信息 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url"
+                  value="jdbc:mysql://localhost:3306/supermarket?useUnicode=true&amp;characterEncoding=UTF-8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="5820MS"/>
+    </bean>
+
+    <!-- Hibernate.cfg.xml -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="hibernateProperties">
+            <props>
+                <!-- Spring和Hibernate整合时需要带上hibernate.前缀 -->
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>com/rcnjtech/entity/Manager.hbm.xml</value>
+                <value>com/rcnjtech/entity/Employee.hbm.xml</value>
+                <value>com/rcnjtech/entity/Supplier.hbm.xml</value>
+                <value>com/rcnjtech/entity/Goods.hbm.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- HibernateTemplate注入SessionFactory -->
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="hibernateTransactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="hibernateTransactionManager"/>
+
+    <!-- EmployeeDao注入HibernateTemplate -->
+    <bean id="employeeDao" class="com.rcnjtech.dao.impl.EmployeeDaoImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+
+    <!-- EmployeeService注入EmployeeDao -->
+    <bean id="employeeService" class="com.rcnjtech.service.impl.EmployeeServiceImpl">
+        <property name="employeeDao" ref="employeeDao"/>
+    </bean>
+
+    <!-- EmployeeAction注入EmployeeService，scope属性为prototype(多实例) -->
+    <bean id="employeeAction" class="com.rcnjtech.action.EmployeeAction" scope="prototype">
+        <property name="employeeService" ref="employeeService"/>
+    </bean>
+
+    <!-- Supplier -->
+    <bean id="supplierDao" class="com.rcnjtech.dao.impl.SupplierDaoImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+
+    <bean id="supplierService" class="com.rcnjtech.service.impl.SupplierServiceImpl">
+        <property name="supplierDao" ref="supplierDao"/>
+    </bean>
+
+    <bean id="supplierAction" class="com.rcnjtech.action.SupplierAction" scope="prototype">
+        <property name="supplierService" ref="supplierService"/>
+    </bean>
+
+    <!-- Manager -->
+    <bean id="managerDao" class="com.rcnjtech.dao.impl.ManagerDaoImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+
+    <bean id="managerService" class="com.rcnjtech.service.impl.ManagerServiceImpl">
+        <property name="managerDao" ref="managerDao"/>
+    </bean>
+
+    <!-- Goods -->
+    <bean id="goodsDao" class="com.rcnjtech.dao.impl.GoodsDaoImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+
+    <bean id="goodsService" class="com.rcnjtech.service.impl.GoodsServiceImpl">
+        <property name="goodsDao" ref="goodsDao"/>
+    </bean>
+
+    <bean id="goodsAction" class="com.rcnjtech.action.GoodsAction" scope="prototype">
+        <property name="goodsService" ref="goodsService"/>
+    </bean>
+
+    <!-- 用户登录和注销 -->
+    <bean id="userAction" class="com.rcnjtech.action.UserAction" scope="prototype">
+        <property name="managerService" ref="managerService"/>
+        <property name="employeeService" ref="employeeService"/>
+    </bean>
+
+    <bean id="managerRegisterAction" class="com.rcnjtech.action.ManagerRegisterAction" scope="prototype">
+        <property name="managerService" ref="managerService"/>
+    </bean>
+</beans>

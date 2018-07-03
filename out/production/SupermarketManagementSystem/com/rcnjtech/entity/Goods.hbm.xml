@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.rcnjtech.entity.Goods" table="goods">
+        <id name="gid" column="gid" type="integer">
+            <generator class="assigned"/>
+        </id>
+        <property name="name" column="name" type="string" length="20"/>
+        <property name="type" column="type" type="string" length="20"/>
+        <property name="cost" column="cost" type="double"/>
+        <property name="buy" column="buy" type="integer"/>
+        <property name="price" column="price" type="double"/>
+        <property name="sell" column="sell" type="integer"/>
+    </class>
+</hibernate-mapping>
